@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Artists</title>
+    <style>
+        header {
+    background-color:palevioletred;
+    color:gold;
+    text-align: center;
+    padding: 10px;
+}
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:pink;
+
+}
+
+#topArtists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.artistCard {
+    width: 200px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.artistImage {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.artistName {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.artistLink {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.artistLink a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.artistLink a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Top Artists</h1>
+    </header>
+<div id="topArtists"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Dummy data for demonstration
+    const topArtistsData = [
+        { name: "Pawan Singh", image:"./assets/Image/pawan.jpg", wikipedia:"https://en.wikipedia.org/wiki/Pawan_Singh" },
+        { name: "Arijit Singh", image: "./assets/Image/arjit.jpg", wikipedia: "https://en.wikipedia.org/wiki/Arijit_Singh" },
+        { name: "Neha Kakkar", image: "./assets/Image/neha.jpg", wikipedia: "https://en.wikipedia.org/wiki/Neha_Kakkar" },
+        // Add more artists as needed
+    ];
+
+    const topArtistsContainer = document.getElementById("topArtists");
+
+    // Populate the top artists container with artist cards
+    topArtistsData.forEach(artist => {
+        const artistCard = document.createElement("div");
+        artistCard.className = "artistCard";
+
+        const artistImage = document.createElement("img");
+        artistImage.className = "artistImage";
+        artistImage.src = artist.image;
+        artistImage.alt = `${artist.name} Image`;
+
+        const artistName = document.createElement("div");
+        artistName.className = "artistName";
+        artistName.textContent = artist.name;
+
+        const artistLink = document.createElement("div");
+        artistLink.className = "artistLink";
+        const link = document.createElement("a");
+        link.href = artist.wikipedia;
+        link.target = "_blank";
+        link.textContent = "Wikipedia";
+        artistLink.appendChild(link);
+
+        artistCard.appendChild(artistImage);
+        artistCard.appendChild(artistName);
+        artistCard.appendChild(artistLink);
+
+        topArtistsContainer.appendChild(artistCard);
+    });
+});
+
+</script>
+</body>
+</html>

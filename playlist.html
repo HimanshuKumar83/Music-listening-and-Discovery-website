@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playlist</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color:pink;
+            color: rgb(110, 82, 9);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .singer-section {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: pink;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .singer-name {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .playlist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .playlist-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .playlist-item img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .playlist-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        audio {
+            width: 100%;
+            outline: none;
+        }
+
+        .currently-playing {
+            background-color:red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MUSIC PLAYLIST</h1>
+    </header>
+
+    <div class="singer-section">
+        <div class="singer-name">ENGLISH SONG</div>
+        <ul class="playlist">
+            <li class="playlist-item" data-src="./assets/Songs/I Like Me Better - Lauv.mp3">
+                <img src="./assets/Image/ilikemebetter.png" alt="Jane Song 1" width="30" height="30">
+                I Like Me Better
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/betty.mp3">
+                <img src="./assets/Image/betty.jpeg" alt="Jane Song 2" width="30" height="30">
+                betty
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/ghost.mp3">
+                <img src="./assets/Image/ghost.jpg" alt="Jane Song 2" width="30" height="30">
+                ghost
+            </li>
+            
+            <!-- Add more songs for John Singer -->
+        </ul>
+    </div>
+
+    <div class="singer-section">
+        <div class="singer-name">HINDI SONG</div>
+        <ul class="playlist">
+            <li class="playlist-item" data-src="./assets/Songs/khoya.mp3">
+                <img src="./assets/Image/khoya.jpg" alt="Jane Song 1" width="30" height="30">
+                khoya
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/mazaak.mp3">
+                <img src="./assets/Image/mazaak.jpg" alt="Jane Song 2" width="30" height="30">
+                mazaak
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/baraat.mp3">
+                <img src="./assets/Image/baraat.jpeg" alt="Jane Song 2" width="30" height="30">
+                baraat
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/ishq.mp3">
+                <img src="./assets/Image/ishq.jpg" alt="Jane Song 2" width="30" height="30">
+                ishq
+            </li>
+            <li class="playlist-item" data-src="./assets/Songs/katputli.mp3">
+                <img src="./assets/Image/katputli.jpg" alt="Jane Song 2" width="30" height="30">
+                katputli
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="singer-section">
+        <div class="singer-name">BHOJPURI SONG</div>
+        <ul class="playlist">
+            <li class="playlist-item" data-srC="./assets/Songs/lolipop.mp3">
+                <img src="./assets/Image/1.jpg" alt="John Song 1" width="30" height="30">
+                lolipop
+            </li>
+            <!-- Add more songs for Jane Singer -->
+        </ul>
+    </div>
+
+    
+
+    <audio controls id="audioPlayer">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const playlistItems = document.querySelectorAll(".playlist-item");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            playlistItems.forEach(function (item) {
+                item.addEventListener("click", function () {
+                    audioPlayer.src = item.getAttribute("data-src");
+                    playlistItems.forEach(function (li) {
+                        li.classList.remove("currently-playing");
+                    });
+                    item.classList.add("currently-playing");
+                    audioPlayer.play();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:pink;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 30px;
+}
+
+p{
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input{
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid rgb(137, 137, 137);
+    margin-top: 10px;
+    outline: none;
+}
+
+.login-btn{
+    border: none;
+    background-color: green;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form>
+        <label for="username">Username</label>
+        <input type="text" name="username" />
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+        <input type="submit" class="login-btn" value="Login" />
+      </form>
+    </div>
+    <script>
+        const form = document.querySelector("form")
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+
+    const username = form.username.value
+    const password = form.password.value
+
+    const authenticated = authentication(username,password)
+
+    if(authenticated){
+        window.location.href = "index.html"
+    }else{
+        alert("wrong")
+    }
+})
+
+// function for checking username and password
+
+function authentication(username,password){
+    if(username === "awadh" && password === "123456"){
+        return true
+    }else{
+        return false
+    }
+}
+    </script>
+  </body>
+</html>
